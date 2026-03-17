@@ -1,0 +1,1112 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" type="image/png" href="https://biroorganisasi.sumbarprov.go.id/logo.png">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="google-site-verification" content="SrTZawFSaLAONuV52vjH13dAEw3zOeO0J7W9G7wwpi8" />
+<title>Biro Organisasi Sumatera Barat</title>
+<style>
+/* ====================================================
+   RESET & BASE
+==================================================== */
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:Arial,sans-serif;font-size:13px;background:#f0f0f0;color:#333;}
+a{text-decoration:none;color:inherit;}
+img{border:0;max-width:100%;}
+ul{list-style:none;}
+
+/* ====================================================
+   HEADER — logo kiri + judul tengah + garuda kanan
+==================================================== */
+#header{
+  background:#fff;
+  border-bottom:3px solid #ddd;
+  padding:8px 0;
+}
+#header .wrap{
+  width:960px;
+  margin:0 auto;
+  display:flex;
+  align-items:center;
+  gap:0;
+}
+/* logo kiri */
+#header .logo{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  flex:1;
+}
+#header .logo img{
+  height:70px;
+  width:70px;
+  object-fit:contain;
+}
+#header .logo-text{}
+#header .logo-text .title{
+  font-size:20px;
+  font-weight:bold;
+  color:#00306e;
+  letter-spacing:1px;
+  text-transform:uppercase;
+  line-height:1.2;
+}
+#header .logo-text .subtitle{
+  font-size:11px;
+  color:#555;
+  margin-top:2px;
+}
+/* garuda kanan */
+#header .garuda{
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+#header .garuda img{
+  height:68px;
+}
+
+/* ====================================================
+   NAVBAR
+==================================================== */
+#navbar{
+  background:#00306e;
+  width:100%;
+  position:sticky;
+  top:0;
+  z-index:9999;
+}
+#navbar .wrap{
+  width:960px;
+  margin:0 auto;
+  display:flex;
+  align-items:stretch;
+}
+#navbar ul.menu{
+  display:flex;
+  align-items:stretch;
+  flex:1;
+}
+#navbar ul.menu > li{
+  position:relative;
+}
+#navbar ul.menu > li > a{
+  display:flex;
+  align-items:center;
+  gap:4px;
+  color:#fff;
+  font-size:12px;
+  font-weight:bold;
+  padding:0 13px;
+  height:42px;
+  white-space:nowrap;
+  border-right:1px solid rgba(255,255,255,.1);
+  transition:background .2s;
+}
+#navbar ul.menu > li > a:hover,
+#navbar ul.menu > li.active > a{
+  background:#0055c0;
+}
+#navbar ul.menu > li:first-child > a{
+  border-left:1px solid rgba(255,255,255,.1);
+}
+/* dropdown */
+#navbar .sub{
+  display:none;
+  position:absolute;
+  top:42px;
+  left:0;
+  background:#fff;
+  min-width:200px;
+  border-top:2px solid #0055c0;
+  box-shadow:2px 4px 10px rgba(0,0,0,.2);
+  z-index:9999;
+}
+#navbar ul.menu > li:hover .sub{display:block;}
+#navbar .sub li a{
+  display:block;
+  padding:8px 14px;
+  font-size:12px;
+  color:#333;
+  border-bottom:1px solid #eee;
+  white-space:nowrap;
+  transition:background .15s;
+}
+#navbar .sub li a:hover{background:#e8f0fe;color:#00306e;}
+/* search */
+#navbar .search-box{
+  display:flex;
+  align-items:center;
+  padding:0 0 0 10px;
+  margin-left:auto;
+}
+#navbar .search-box input{
+  height:26px;
+  width:160px;
+  padding:0 8px;
+  border:none;
+  border-radius:2px 0 0 2px;
+  font-size:12px;
+  outline:none;
+  background:rgba(255,255,255,.18);
+  color:#fff;
+}
+#navbar .search-box input::placeholder{color:rgba(255,255,255,.5);}
+#navbar .search-box button{
+  height:26px;
+  padding:0 10px;
+  background:#0055c0;
+  border:none;
+  color:#fff;
+  font-size:13px;
+  border-radius:0 2px 2px 0;
+  cursor:pointer;
+}
+
+/* ====================================================
+   HERO SLIDER  —  full width, height 400px
+==================================================== */
+#slider{
+  position:relative;
+  width:100%;
+  height:400px;
+  overflow:hidden;
+  background:#00306e;
+}
+.slider-inner{
+  display:flex;
+  height:100%;
+  transition:transform .7s ease;
+}
+.slide{
+  min-width:100%;
+  height:100%;
+  position:relative;
+  flex-shrink:0;
+}
+.slide img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
+.slide-bg{
+  width:100%;height:100%;
+  display:flex;align-items:center;justify-content:center;
+  background:linear-gradient(160deg,#00306e 0%,#0055c0 100%);
+  color:rgba(255,255,255,.8);
+  font-size:50px;
+}
+/* prev / next */
+.sl-btn{
+  position:absolute;
+  top:50%;transform:translateY(-50%);
+  background:rgba(0,0,0,.3);
+  border:none;color:#fff;
+  width:34px;height:50px;
+  font-size:20px;
+  cursor:pointer;z-index:10;
+  line-height:1;
+  transition:background .2s;
+}
+.sl-btn:hover{background:rgba(0,0,0,.6);}
+.sl-btn.prev{left:0;}
+.sl-btn.next{right:0;}
+/* dots */
+.sl-dots{
+  position:absolute;bottom:12px;right:16px;
+  display:flex;gap:5px;z-index:10;
+}
+.sl-dot{
+  width:10px;height:10px;border-radius:50%;
+  background:rgba(255,255,255,.45);
+  border:none;cursor:pointer;
+  transition:background .2s;
+}
+.sl-dot.on{background:#fff;}
+/* loading text */
+.sl-loading{
+  position:absolute;bottom:12px;left:16px;
+  color:rgba(255,255,255,.6);font-size:11px;z-index:10;
+}
+
+/* ====================================================
+   PAGE WRAP — 960px centred
+==================================================== */
+#page{
+  width:960px;
+  margin:0 auto;
+  padding:16px 0 20px;
+}
+
+/* ====================================================
+   SECTION TITLE BAR
+==================================================== */
+.sec-title{
+  background:#00306e;
+  color:#fff;
+  font-size:13px;
+  font-weight:bold;
+  padding:7px 14px;
+  text-transform:uppercase;
+  letter-spacing:.4px;
+  margin-bottom:0;
+}
+
+/* ====================================================
+   PORTAL LAYANAN — slider kartu di bawah heading
+==================================================== */
+#portal-section{
+  background:#fff;
+  padding:14px 0 18px;
+  margin-bottom:14px;
+  border:1px solid #ddd;
+}
+#portal-section .sec-title{margin:0 0 14px;}
+#portal-carousel{
+  position:relative;
+  padding:0 30px;
+}
+#portal-track-wrap{overflow:hidden;}
+#portal-track{
+  display:flex;
+  gap:10px;
+  transition:transform .4s ease;
+}
+.p-card{
+  flex:0 0 calc(25% - 8px);
+  border:1px solid #e0e0e0;
+  border-radius:4px;
+  padding:14px 10px 12px;
+  text-align:center;
+  background:#fff;
+  cursor:pointer;
+  transition:box-shadow .2s,border-color .2s,transform .2s;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+}
+.p-card:hover{
+  box-shadow:0 3px 14px rgba(0,0,0,.13);
+  border-color:#0055c0;
+  transform:translateY(-2px);
+}
+.p-card img{
+  height:60px;
+  width:auto;
+  max-width:120px;
+  object-fit:contain;
+  display:block;
+  margin:0 auto 8px;
+}
+.p-card .p-icon{
+  font-size:36px;
+  margin-bottom:8px;
+  height:60px;
+  display:flex;align-items:center;justify-content:center;
+}
+.p-card .p-desc{
+  font-size:11px;
+  color:#555;
+  line-height:1.5;
+  text-align:center;
+  margin-top:4px;
+}
+/* carousel arrows */
+.p-arrow{
+  position:absolute;
+  top:50%;transform:translateY(-50%);
+  background:#00306e;
+  border:none;color:#fff;
+  width:24px;height:40px;
+  font-size:18px;cursor:pointer;
+  border-radius:2px;
+  transition:background .2s;
+  display:flex;align-items:center;justify-content:center;
+  line-height:1;
+}
+.p-arrow:hover{background:#0055c0;}
+.p-arrow.prev{left:4px;}
+.p-arrow.next{right:4px;}
+
+/* ====================================================
+   MIDDLE LAYOUT — main col + sidebar
+==================================================== */
+#middle{
+  display:flex;
+  gap:14px;
+  align-items:flex-start;
+}
+#main-col{flex:1;min-width:0;}
+#sidebar{width:220px;flex-shrink:0;}
+
+/* ====================================================
+   INFORMASI BOX (tabs: Berita Foto Agenda …)
+==================================================== */
+#info-box{
+  border:1px solid #ddd;
+  background:#fff;
+  margin-bottom:14px;
+}
+#info-tabs{
+  display:flex;
+  background:#f5f5f5;
+  border-bottom:1px solid #ddd;
+}
+.i-tab{
+  padding:8px 14px;
+  font-size:11px;
+  font-weight:bold;
+  color:#555;
+  cursor:pointer;
+  border:none;
+  background:none;
+  border-bottom:2px solid transparent;
+  margin-bottom:-1px;
+  text-transform:uppercase;
+  letter-spacing:.3px;
+  transition:all .2s;
+}
+.i-tab.on{
+  color:#00306e;
+  border-bottom-color:#00306e;
+  background:#fff;
+}
+.i-pane{display:none;padding:10px 12px;}
+.i-pane.on{display:block;}
+
+/* news items */
+.n-item{
+  display:flex;
+  gap:10px;
+  padding:8px 0;
+  border-bottom:1px solid #f0f0f0;
+}
+.n-item:last-child{border-bottom:none;}
+.n-item:hover .n-title{color:#0055c0;}
+.n-thumb{
+  width:85px;height:60px;
+  flex-shrink:0;border-radius:3px;
+  overflow:hidden;background:#e0e8f8;
+  display:flex;align-items:center;justify-content:center;
+  font-size:22px;color:#0055c0;
+}
+.n-thumb img{width:100%;height:100%;object-fit:cover;}
+.n-date{font-size:10px;color:#999;margin-bottom:2px;}
+.n-title{font-size:12px;font-weight:bold;line-height:1.4;color:#222;}
+.n-excerpt{font-size:11px;color:#777;margin-top:3px;line-height:1.4;}
+.n-more{text-align:right;margin-top:8px;}
+.n-more a{font-size:11px;color:#0055c0;font-weight:bold;}
+
+/* foto grid */
+.foto-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:6px;
+  padding:4px 0;
+}
+.foto-item{
+  aspect-ratio:4/3;border-radius:3px;overflow:hidden;
+  background:#d8e4f8;display:flex;align-items:center;justify-content:center;font-size:26px;
+}
+.foto-item img{width:100%;height:100%;object-fit:cover;}
+
+/* agenda */
+.ag-item{
+  display:flex;gap:8px;
+  padding:7px 0;border-bottom:1px solid #f0f0f0;
+  align-items:flex-start;
+}
+.ag-item:last-child{border-bottom:none;}
+.ag-cal{
+  background:#0055c0;color:#fff;
+  border-radius:3px;text-align:center;
+  min-width:38px;padding:3px;flex-shrink:0;
+}
+.ag-cal .d{font-size:18px;font-weight:bold;line-height:1;}
+.ag-cal .m{font-size:9px;line-height:1.3;}
+.ag-info h4{font-size:11px;font-weight:bold;color:#222;line-height:1.4;}
+.ag-info p{font-size:10px;color:#888;margin-top:1px;}
+
+/* ====================================================
+   SIDEBAR WIDGETS
+==================================================== */
+.w-box{
+  border:1px solid #ddd;
+  background:#fff;
+  margin-bottom:12px;
+  overflow:hidden;
+}
+.w-head{
+  background:#00306e;
+  color:#fff;
+  font-size:12px;
+  font-weight:bold;
+  padding:7px 12px;
+  text-transform:uppercase;
+  letter-spacing:.3px;
+}
+.w-body{padding:10px 12px;}
+
+/* Biro info in sidebar */
+.biro-info{}
+.biro-logo-row{
+  display:flex;align-items:center;gap:8px;
+  margin-bottom:10px;
+}
+.biro-logo-row img{height:50px;width:50px;object-fit:contain;}
+.biro-logo-fb{
+  height:50px;width:50px;flex-shrink:0;
+  background:linear-gradient(135deg,#00306e,#0055c0);
+  border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  color:#fff;font-size:16px;font-weight:bold;
+}
+.biro-name{font-size:12px;font-weight:bold;color:#00306e;line-height:1.3;}
+.biro-sub{font-size:10px;color:#777;}
+.biro-addr{font-size:11px;color:#555;line-height:1.8;}
+.biro-addr strong{color:#00306e;}
+
+/* link list */
+.lk-list li{
+  padding:5px 0;
+  border-bottom:1px solid #f0f0f0;
+}
+.lk-list li:last-child{border-bottom:none;}
+.lk-list li a{
+  font-size:11px;color:#0055c0;
+  display:flex;align-items:center;gap:5px;
+  transition:color .2s;
+}
+.lk-list li a:hover{color:#00306e;text-decoration:underline;}
+.lk-list li a::before{content:'›';font-size:15px;color:#0055c0;}
+
+/* ====================================================
+   FOOTER
+==================================================== */
+#footer{
+  background:#00306e;
+  color:#b0c8e8;
+  margin-top:10px;
+  padding:22px 0 0;
+}
+#footer .wrap{
+  width:960px;
+  margin:0 auto;
+  display:flex;
+  gap:24px;
+  padding-bottom:20px;
+}
+#footer .f-brand{flex:2;}
+#footer .f-brand .f-logo-row{
+  display:flex;align-items:center;gap:10px;
+  margin-bottom:12px;
+}
+#footer .f-brand .f-logo-row img{height:54px;}
+#footer .f-brand .f-logo-fb{
+  height:54px;width:54px;flex-shrink:0;
+  background:rgba(255,255,255,.12);border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  color:#fff;font-size:17px;font-weight:bold;
+}
+#footer .f-brand-name{color:#fff;font-size:14px;font-weight:bold;}
+#footer .f-brand-sub{font-size:10px;color:#7a9cc0;}
+#footer .f-addr{font-size:11px;line-height:1.9;color:#8aaec8;margin-top:10px;}
+#footer .f-addr strong{color:#c8dcf0;}
+#footer .f-col{flex:1;}
+#footer .f-col h4{
+  color:#fff;font-size:12px;font-weight:bold;
+  text-transform:uppercase;letter-spacing:.3px;
+  margin-bottom:10px;padding-bottom:6px;
+  border-bottom:1px solid rgba(255,255,255,.15);
+}
+#footer .f-col ul li{margin-bottom:5px;}
+#footer .f-col ul li a{
+  font-size:11px;color:#8aaec8;
+  display:flex;align-items:center;gap:4px;
+  transition:color .2s;
+}
+#footer .f-col ul li a::before{content:'›';font-size:14px;color:#4a7ab5;}
+#footer .f-col ul li a:hover{color:#fff;}
+/* footer bottom bar */
+#footer-bar{
+  background:#00224d;
+  border-top:1px solid rgba(255,255,255,.1);
+  padding:9px 0;
+  text-align:center;
+  font-size:11px;color:#4d7aaa;
+}
+#footer-bar a{color:#5a96cc;}
+#footer-bar .bar-inner{
+  width:960px;margin:0 auto;
+  display:flex;justify-content:space-between;align-items:center;
+}
+/* accessibility btn */
+#a11y{
+  position:fixed;bottom:18px;right:18px;z-index:9999;
+  background:#0055c0;color:#fff;
+  border:none;border-radius:50%;
+  width:40px;height:40px;font-size:18px;
+  cursor:pointer;
+  box-shadow:0 3px 10px rgba(0,0,0,.3);
+}
+</style>
+</head>
+<body>
+
+<!-- ════════════════════════════════
+     HEADER
+════════════════════════════════ -->
+<div id="header">
+  <div class="wrap">
+    <div class="logo">
+      <img
+        src="https://biroorganisasi.sumbarprov.go.id/logo.png"
+        alt="Logo Biro Organisasi"
+        style="height:70px;width:70px;object-fit:contain;"
+      >
+      <div class="logo-text">
+        <div class="title">BIRO ORGANISASI</div>
+        <div class="subtitle">Pemerintah Provinsi Sumatera Barat</div>
+      </div>
+    </div>
+    <div class="garuda">
+      <!-- Garuda Pancasila dari sumbarprov -->
+      <img
+        src="https://sumbarprov.go.id/images/logo_garuda.png"
+        alt="Garuda Pancasila"
+        onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/b/be/Garuda_Pancasila%2C_Coat_of_Arms_of_Indonesia.svg/240px-Garuda_Pancasila%2C_Coat_of_Arms_of_Indonesia.svg.png';this.onerror=null;"
+        style="height:68px;"
+      >
+      <img
+        src="https://sumbarprov.go.id/images/logo.png"
+        alt="Logo Sumbar"
+        onerror="this.style.display='none';"
+        style="height:64px;"
+      >
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════
+     NAVBAR
+════════════════════════════════ -->
+<div id="navbar">
+  <div class="wrap">
+    <ul class="menu">
+      <li class="active">
+        <a href="#">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="#fff" style="flex-shrink:0;"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+          Beranda
+        </a>
+      </li>
+      <li>
+        <a href="#">Profil <span style="font-size:9px;">▾</span></a>
+        <ul class="sub">
+          <li><a href="#">Sejarah</a></li>
+          <li><a href="#">Visi &amp; Misi</a></li>
+          <li><a href="#">Struktur Organisasi</a></li>
+          <li><a href="#">Pejabat Struktural</a></li>
+          <li><a href="#">Tupoksi</a></li>
+        </ul>
+      </li>
+      <li>
+        <a href="#">Informasi <span style="font-size:9px;">▾</span></a>
+        <ul class="sub">
+          <li><a href="#">Berita</a></li>
+          <li><a href="#">Foto</a></li>
+          <li><a href="#">Agenda</a></li>
+          <li><a href="#">Infografis</a></li>
+          <li><a href="#">Video</a></li>
+        </ul>
+      </li>
+      <li><a href="#">Budaya Kerja</a></li>
+      <li><a href="#">Pengumuman</a></li>
+      <li>
+        <a href="#">PPID <span style="font-size:9px;">▾</span></a>
+        <ul class="sub">
+          <li><a href="#">Profil PPID</a></li>
+          <li><a href="#">Informasi Berkala</a></li>
+          <li><a href="#">Informasi Serta Merta</a></li>
+          <li><a href="#">Permohonan Informasi</a></li>
+        </ul>
+      </li>
+      <li><a href="#">Informasi Layanan</a></li>
+      <li>
+        <a href="#">Administrasi <span style="font-size:9px;">▾</span></a>
+        <ul class="sub">
+          <li><a href="#">Kelembagaan</a></li>
+          <li><a href="#">Ketatalaksanaan</a></li>
+          <li><a href="#">Akuntabilitas Kinerja</a></li>
+          <li><a href="#">Pelayanan Publik</a></li>
+        </ul>
+      </li>
+      <li><a href="https://lapor.go.id" target="_blank">Lapor</a></li>
+    </ul>
+    <div class="search-box">
+      <input type="text" placeholder="Cari...">
+      <button>&#128269;</button>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════
+     HERO SLIDER — full width
+════════════════════════════════ -->
+<div id="slider">
+  <div class="slider-inner" id="sliderTrack">
+
+    <!-- SLIDE 1: Masjid Raya Sumbar — gambar asli -->
+    <div class="slide">
+      <img
+        src="https://biroorganisasi.sumbarprov.go.id/assets/images/MASJID_RAYA_SUMBAR.png"
+        alt="Masjid Raya Sumatera Barat"
+        onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"
+      >
+      <div class="slide-bg" style="display:none;">🕌</div>
+    </div>
+
+    <!-- SLIDE 2 -->
+    <div class="slide">
+      <div class="slide-bg" style="background:linear-gradient(160deg,#00224d,#0055c0);flex-direction:column;gap:14px;">
+        <div style="font-size:60px;">🏛️</div>
+        <div style="color:#fff;font-size:20px;font-weight:bold;text-align:center;">Pemerintah Provinsi Sumatera Barat</div>
+        <div style="color:rgba(255,255,255,.75);font-size:13px;text-align:center;">Melayani dengan Profesional dan Integritas</div>
+      </div>
+    </div>
+
+    <!-- SLIDE 3 -->
+    <div class="slide">
+      <div class="slide-bg" style="background:linear-gradient(160deg,#00306e,#003d8c);flex-direction:column;gap:14px;">
+        <div style="font-size:60px;">🤝</div>
+        <div style="color:#fff;font-size:20px;font-weight:bold;text-align:center;">Reformasi Birokrasi</div>
+        <div style="color:rgba(255,255,255,.75);font-size:13px;text-align:center;">Menuju Pemerintahan yang Bersih dan Efektif</div>
+      </div>
+    </div>
+
+  </div>
+
+  <button class="sl-btn prev" id="slPrev">&#8249;</button>
+  <button class="sl-btn next" id="slNext">&#8250;</button>
+
+  <div class="sl-loading" id="slLoading">Loading...</div>
+
+  <div class="sl-dots" id="slDots">
+    <button class="sl-dot on"></button>
+    <button class="sl-dot"></button>
+    <button class="sl-dot"></button>
+  </div>
+</div>
+
+<!-- ════════════════════════════════
+     PAGE CONTENT
+════════════════════════════════ -->
+<div id="page">
+
+  <!-- ── PORTAL LAYANAN ── -->
+  <div id="portal-section">
+    <div class="sec-title">PORTAL LAYANAN</div>
+    <div id="portal-carousel">
+      <button class="p-arrow prev" id="paPrev">&#8249;</button>
+      <div id="portal-track-wrap">
+        <div id="portal-track">
+
+          <a class="p-card" href="https://layanan.sumbarprov.go.id/" target="_blank">
+            <img
+              src="https://biroorganisasi.sumbarprov.go.id/assets/images/logo_csirt_kominfo.png"
+              alt="Helpdesk TIK"
+              onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"
+            >
+            <div class="p-icon" style="display:none;">🖥️</div>
+            <div class="p-desc">Aplikasi Helpdesk merupakan aplikasi yang digunakan untuk memudahkan OPD dalam mengajukan rekomendasi dan permohonan layanan TIK</div>
+          </a>
+
+          <a class="p-card" href="https://www.ppid.sumbarprov.go.id" target="_blank">
+            <img
+              src="https://biroorganisasi.sumbarprov.go.id/assets/images/ppid%201.png"
+              alt="PPID"
+              onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"
+            >
+            <div class="p-icon" style="display:none;">📄</div>
+            <div class="p-desc">PPID adalah kepanjangan dari Pejabat Pengelola Informasi dan Dokumentasi, yang berfungsi sebagai pengelola dan penyampai dokumen yang dimiliki oleh Badan Publik sesuai dengan amanat UU 14/2008 tentang Keterbukaan Informasi Publik</div>
+          </a>
+
+          <a class="p-card" href="https://play.google.com/store/apps/details?id=com.kominfosumbar.sumbarmadani" target="_blank">
+            <img
+              src="https://biroorganisasi.sumbarprov.go.id/assets/images/sumbarmadani.png"
+              alt="Sumbar Madani"
+              onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"
+            >
+            <div class="p-icon" style="display:none;">📱</div>
+            <div class="p-desc">Super Apps Sumbar Madani merupakan satu aplikasi yang memberikan informasi seputar Sumatera Barat kepada publik, dalam rangka mewujudkan pemerintahan Sumatera Barat yang berbasis elektronik.</div>
+          </a>
+
+          <a class="p-card" href="https://sipsakato.sumbarprov.go.id/" target="_blank">
+            <img
+              src="https://biroorganisasi.sumbarprov.go.id/assets/images/sipsakato.png"
+              alt="Pelayanan Satu Pintu"
+              onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"
+            >
+            <div class="p-icon" style="display:none;">🚪</div>
+            <div class="p-desc">PENYELENGGARAAN PELAYANAN PERIZINAN DAN NON PERIZINAN PELAYANAN TERPADU SATU PINTU</div>
+          </a>
+
+          <a class="p-card" href="https://jdih.birohukum.sumbarprov.go.id/" target="_blank">
+            <img
+              src="https://biroorganisasi.sumbarprov.go.id/assets/images/jdih.png"
+              alt="JDIH"
+              onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"
+            >
+            <div class="p-icon" style="display:none;">⚖️</div>
+            <div class="p-desc">Produk Hukum</div>
+          </a>
+
+          <a class="p-card" href="http://lpse.sumbarprov.go.id/" target="_blank">
+            <img
+              src="https://biroorganisasi.sumbarprov.go.id/assets/images/lpse.png"
+              alt="LPSE"
+              onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"
+            >
+            <div class="p-icon" style="display:none;">🛒</div>
+            <div class="p-desc">LPSE ialah layanan pengelolaan teknologi informasi untuk memfasilitasi pelaksanaan Pengadaan Barang/Jasa secara elektronik</div>
+          </a>
+
+          <a class="p-card" href="https://komisiinformasi.sumbarprov.go.id/" target="_blank">
+            <img
+              src="https://biroorganisasi.sumbarprov.go.id/assets/images/KI.png"
+              alt="Komisi Informasi"
+              onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"
+            >
+            <div class="p-icon" style="display:none;">ℹ️</div>
+            <div class="p-desc">Komisi Informasi Sumatera Barat Keterbukaan Informasi</div>
+          </a>
+
+        </div>
+      </div>
+      <button class="p-arrow next" id="paNext">&#8250;</button>
+    </div>
+  </div>
+  <!-- end portal layanan -->
+
+  <!-- ── MIDDLE: INFO + SIDEBAR ── -->
+  <div id="middle">
+
+    <!-- MAIN COLUMN -->
+    <div id="main-col">
+      <div id="info-box">
+        <div class="sec-title">INFORMASI</div>
+        <div id="info-tabs">
+          <button class="i-tab on" data-p="berita">BERITA</button>
+          <button class="i-tab" data-p="foto">FOTO</button>
+          <button class="i-tab" data-p="agenda">AGENDA</button>
+          <button class="i-tab" data-p="infografis">INFOGRAFIS</button>
+          <button class="i-tab" data-p="video">VIDEO</button>
+        </div>
+
+        <!-- BERITA -->
+        <div class="i-pane on" id="p-berita">
+
+          <a class="n-item" href="#">
+            <div class="n-thumb">
+              <img src="https://biroumum.sumbarprov.go.id/images/2026/03/thumbnails/Screenshot_2026-03-13_161437.png"
+                alt="" onerror="this.parentElement.innerHTML='📰';">
+            </div>
+            <div>
+              <div class="n-date">Rabu, 11 Maret 2026</div>
+              <div class="n-title">Partisipasi Biro Organisasi Dalam Giat Gotong Royong Bersama Seluruh Perangkat Daerah Pemerintah Provinsi Sumatera Barat</div>
+              <div class="n-excerpt">Biro Organisasi Setda Prov. Sumbar berpartisipasi aktif dalam kegiatan gotong royong bersama seluruh OPD Pemprov Sumbar...</div>
+            </div>
+          </a>
+
+          <a class="n-item" href="#">
+            <div class="n-thumb">
+              <img src="https://biroumum.sumbarprov.go.id/images/2026/03/thumbnails/Screenshot_2026-03-13_161335.png"
+                alt="" onerror="this.parentElement.innerHTML='📰';">
+            </div>
+            <div>
+              <div class="n-date">Rabu, 11 Maret 2026</div>
+              <div class="n-title">Penguatan Reformasi Birokrasi di Lingkungan Pemerintah Provinsi Sumatera Barat Tahun 2026</div>
+              <div class="n-excerpt">Biro Organisasi menggelar rapat koordinasi membahas percepatan implementasi reformasi birokrasi di seluruh OPD Prov. Sumbar...</div>
+            </div>
+          </a>
+
+          <a class="n-item" href="#">
+            <div class="n-thumb">
+              <img src="https://biroumum.sumbarprov.go.id/images/2026/03/thumbnails/Screenshot_2026-03-13_160647.png"
+                alt="" onerror="this.parentElement.innerHTML='📰';">
+            </div>
+            <div>
+              <div class="n-date">Rabu, 11 Maret 2026</div>
+              <div class="n-title">Sosialisasi Sistem Akuntabilitas Kinerja Instansi Pemerintah (SAKIP) 2026</div>
+              <div class="n-excerpt">Kegiatan sosialisasi SAKIP diikuti seluruh OPD lingkungan Pemerintah Provinsi Sumatera Barat sebagai upaya peningkatan akuntabilitas...</div>
+            </div>
+          </a>
+
+          <a class="n-item" href="#">
+            <div class="n-thumb">
+              <img src="https://biroumum.sumbarprov.go.id/images/2026/03/thumbnails/Screenshot_2026-03-13_160316.png"
+                alt="" onerror="this.parentElement.innerHTML='📰';">
+            </div>
+            <div>
+              <div class="n-date">Rabu, 11 Maret 2026</div>
+              <div class="n-title">Evaluasi Tata Kelola Pemerintahan Daerah Kabupaten/Kota se-Sumatera Barat</div>
+              <div class="n-excerpt">Tim Biro Organisasi melaksanakan evaluasi komprehensif terhadap tata kelola pemerintahan daerah kabupaten/kota se-Sumbar...</div>
+            </div>
+          </a>
+
+          <a class="n-item" href="#">
+            <div class="n-thumb">📰</div>
+            <div>
+              <div class="n-date">Kamis, 05 Maret 2026</div>
+              <div class="n-title">Internalisasi Budaya Kerja ASN BerAKHLAK di Lingkungan Pemprov Sumatera Barat</div>
+              <div class="n-excerpt">Biro Organisasi menyelenggarakan internalisasi budaya kerja ASN BerAkhlak di Auditorium Gubernuran Sumatera Barat...</div>
+            </div>
+          </a>
+
+          <div class="n-more"><a href="#">Lihat Semua Berita &raquo;</a></div>
+        </div>
+
+        <!-- FOTO -->
+        <div class="i-pane" id="p-foto">
+          <div class="foto-grid">
+            <div class="foto-item">
+              <img src="https://biroumum.sumbarprov.go.id/images/2024/09/thumbnails/30,_31__Akses_difabel_dan_kursi_roda.jpeg"
+                alt="" onerror="this.parentElement.innerHTML='🖼️';">
+            </div>
+            <div class="foto-item">
+              <img src="https://biroumum.sumbarprov.go.id/images/2024/09/thumbnails/29_a__Meja,_kursi,_kursi_tunggu_dan_sarana_penerimaan_(desk_information)_.jpeg"
+                alt="" onerror="this.parentElement.innerHTML='🖼️';">
+            </div>
+            <div class="foto-item">
+              <img src="https://biroumum.sumbarprov.go.id/images/2024/09/thumbnails/28__Ruangan_Layanan_PPID1.jpeg"
+                alt="" onerror="this.parentElement.innerHTML='🖼️';">
+            </div>
+            <div class="foto-item">
+              <img src="https://biroumum.sumbarprov.go.id/images/2024/09/thumbnails/24__Rapat_Persiapan_Pengadaan_Barang_dan_Jasa_Bersama_Biro_PBJ.jpeg"
+                alt="" onerror="this.parentElement.innerHTML='🖼️';">
+            </div>
+            <div class="foto-item" style="background:#c8d8f0;">🖼️</div>
+            <div class="foto-item" style="background:#d0dff5;">🖼️</div>
+          </div>
+          <div class="n-more" style="margin-top:8px;"><a href="#">Lihat Semua Foto &raquo;</a></div>
+        </div>
+
+        <!-- AGENDA -->
+        <div class="i-pane" id="p-agenda">
+          <div class="ag-item">
+            <div class="ag-cal"><div class="d">20</div><div class="m">MAR</div></div>
+            <div class="ag-info">
+              <h4>Rapat Evaluasi Kinerja Triwulan I 2026</h4>
+              <p>📍 Aula Kantor Gubernur Sumatera Barat</p>
+            </div>
+          </div>
+          <div class="ag-item">
+            <div class="ag-cal"><div class="d">25</div><div class="m">MAR</div></div>
+            <div class="ag-info">
+              <h4>Workshop Penguatan Pengawasan Internal OPD</h4>
+              <p>📍 Hotel Grand Inna Padang</p>
+            </div>
+          </div>
+          <div class="ag-item">
+            <div class="ag-cal"><div class="d">01</div><div class="m">APR</div></div>
+            <div class="ag-info">
+              <h4>Sosialisasi Kebijakan Reformasi Birokrasi 2026</h4>
+              <p>📍 Biro Organisasi Setda Prov. Sumbar</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- INFOGRAFIS -->
+        <div class="i-pane" id="p-infografis">
+          <div style="text-align:center;padding:20px;color:#aaa;">
+            <div style="font-size:46px;margin-bottom:8px;">📊</div>
+            <p>Infografis tersedia segera</p>
+          </div>
+        </div>
+
+        <!-- VIDEO -->
+        <div class="i-pane" id="p-video">
+          <div style="text-align:center;padding:20px;color:#aaa;">
+            <div style="font-size:46px;margin-bottom:8px;color:#cc0000;">▶️</div>
+            <p>Video tersedia segera</p>
+          </div>
+        </div>
+
+      </div><!-- #info-box -->
+    </div><!-- #main-col -->
+
+    <!-- SIDEBAR -->
+    <div id="sidebar">
+
+      <!-- Info Biro -->
+      <div class="w-box">
+        <div class="w-head">Biro Organisasi SUMBAR</div>
+        <div class="w-body">
+          <div class="biro-info">
+            <div class="biro-logo-row">
+              <img
+                src="https://biroorganisasi.sumbarprov.go.id/logo.png"
+                alt="Logo Biro Organisasi"
+                style="height:50px;width:50px;object-fit:contain;"
+              >
+              <div>
+                <div class="biro-name">BIRO ORGANISASI</div>
+                <div class="biro-sub">Prov. Sumatera Barat</div>
+              </div>
+            </div>
+            <div class="biro-addr">
+              <strong>Provinsi Sumatera Barat-Kota Padang</strong><br>
+              Alamat : Jalan Jenderal Sudirman No. 51, Kota Padang, Sumatera Barat<br>
+              <strong>Kode Pos 25129</strong>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Pengumuman -->
+      <div class="w-box">
+        <div class="w-head">Pengumuman</div>
+        <div class="w-body">
+          <ul class="lk-list">
+            <li><a href="#">Seleksi Terbuka JPT Pratama Prov. Sumbar 2026</a></li>
+            <li><a href="#">Hasil Evaluasi Implementasi SAKIP 2025</a></li>
+            <li><a href="#">Tata Cara Permohonan Layanan Informasi Publik</a></li>
+            <li><a href="#">Pengumuman Penerimaan PPPK Tahun 2026</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Link Terkait -->
+      <div class="w-box">
+        <div class="w-head">Link Terkait</div>
+        <div class="w-body">
+          <ul class="lk-list">
+            <li><a href="https://sumbarprov.go.id" target="_blank">Pemerintah Prov. Sumbar</a></li>
+            <li><a href="https://www.kemenpan.go.id" target="_blank">KemenPAN-RB</a></li>
+            <li><a href="https://bkn.go.id" target="_blank">Badan Kepegawaian Negara</a></li>
+            <li><a href="https://lan.go.id" target="_blank">LAN RI</a></li>
+            <li><a href="https://ombudsman.go.id" target="_blank">Ombudsman RI</a></li>
+            <li><a href="https://lapor.go.id" target="_blank">LAPOR!</a></li>
+          </ul>
+        </div>
+      </div>
+
+    </div><!-- #sidebar -->
+
+  </div><!-- #middle -->
+
+</div><!-- #page -->
+
+<!-- ════════════════════════════════
+     FOOTER
+════════════════════════════════ -->
+<div id="footer">
+  <div class="wrap">
+    <div class="f-brand">
+      <div class="f-logo-row">
+        <img
+          src="https://biroorganisasi.sumbarprov.go.id/logo.png"
+          alt="Logo Biro Organisasi"
+          style="height:54px;width:54px;object-fit:contain;"
+        >
+        <div>
+          <div class="f-brand-name">BIRO ORGANISASI</div>
+          <div class="f-brand-sub">Pemerintah Provinsi Sumatera Barat</div>
+        </div>
+      </div>
+      <div class="f-addr">
+        <strong>Provinsi Sumatera Barat-Kota Padang</strong><br>
+        Alamat : Jalan Jenderal Sudirman No. 51, Kota Padang, Sumatera Barat<br>
+        <strong>Kode Pos 25129</strong>
+      </div>
+    </div>
+
+    <div class="f-col">
+      <h4>INFORMASI</h4>
+      <ul>
+        <li><a href="#">BERITA</a></li>
+        <li><a href="#">FOTO</a></li>
+        <li><a href="#">AGENDA</a></li>
+        <li><a href="#">INFOGRAFIS</a></li>
+        <li><a href="#">VIDEO</a></li>
+      </ul>
+    </div>
+
+    <div class="f-col">
+      <h4>TAUTAN</h4>
+      <ul>
+        <li><a href="https://sumbarprov.go.id" target="_blank">Pemprov Sumbar</a></li>
+        <li><a href="https://www.kemenpan.go.id" target="_blank">KemenPAN-RB</a></li>
+        <li><a href="https://bkn.go.id" target="_blank">BKN</a></li>
+        <li><a href="https://lan.go.id" target="_blank">LAN RI</a></li>
+        <li><a href="https://lapor.go.id" target="_blank">LAPOR!</a></li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+<div id="footer-bar">
+  <div class="bar-inner">
+    <span>© 2025 <a href="https://diskominfotik.sumbarprov.go.id" target="_blank">DISKOMINFOTIK</a> Provinsi Sumatera Barat. All Rights Reserved.</span>
+    <span></span>
+  </div>
+</div>
+
+<!-- Aksesibilitas -->
+<button id="a11y" title="Aksesibilitas">♿</button>
+
+<!-- ════════════════════════════════
+     JAVASCRIPT
+════════════════════════════════ -->
+<script>
+/* HERO SLIDER */
+(function(){
+  var track = document.getElementById('sliderTrack');
+  var dots  = document.querySelectorAll('.sl-dot');
+  var load  = document.getElementById('slLoading');
+  var n=0, total=3, t;
+
+  function go(i){
+    n = (i+total)%total;
+    track.style.transform='translateX(-'+(n*100)+'%)';
+    dots.forEach(function(d,j){d.classList.toggle('on',j===n);});
+    if(load) load.style.display = n===0?'block':'none';
+  }
+
+  document.getElementById('slPrev').onclick=function(){clearInterval(t);go(n-1);start();};
+  document.getElementById('slNext').onclick=function(){clearInterval(t);go(n+1);start();};
+  dots.forEach(function(d,i){d.onclick=function(){clearInterval(t);go(i);start();};});
+
+  function start(){t=setInterval(function(){go(n+1);},4500);}
+  go(0);start();
+})();
+
+/* PORTAL CAROUSEL */
+(function(){
+  var track = document.getElementById('portal-track');
+  var cards = track.querySelectorAll('.p-card');
+  var wrap  = document.getElementById('portal-track-wrap');
+  var vis=4, pos=0;
+  var max=Math.max(0,cards.length-vis);
+  var gap=10;
+
+  function move(dir){
+    pos=Math.max(0,Math.min(pos+dir,max));
+    var w=(wrap.offsetWidth/vis)-gap;
+    track.style.transform='translateX(-'+((w+gap)*pos)+'px)';
+  }
+  document.getElementById('paPrev').onclick=function(){move(-1);};
+  document.getElementById('paNext').onclick=function(){move(1);};
+})();
+
+/* INFO TABS */
+document.querySelectorAll('.i-tab').forEach(function(btn){
+  btn.addEventListener('click',function(){
+    document.querySelectorAll('.i-tab').forEach(function(b){b.classList.remove('on');});
+    document.querySelectorAll('.i-pane').forEach(function(p){p.classList.remove('on');});
+    this.classList.add('on');
+    document.getElementById('p-'+this.dataset.p).classList.add('on');
+  });
+});
+</script>
+</body>
+</html>
